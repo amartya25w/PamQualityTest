@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{06385F5A-C3A4-498C-9F82-800EC0571435}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ArconConnector.BusinessLayer</RootNamespace>
+    <AssemblyName>ArconConnector.BusinessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ARCONPAMSecurity, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ArconPAMNextGen\AllSupportingDLLs\ARCONPAMSecurity.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ARCON_API\ARCONPAMAPI\ARCONPAMAPI\bin\EntityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ARCON_API\ARCONPAMAPI\ARCONPAMAPI\bin\Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ScreenCapturev2">
+      <HintPath>..\..\ConnectorLibrary\ConnectorLibraryDLL\ScreenCapturev2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseConnectorManager.cs" />
+    <Compile Include="ArconBaseManager.cs" />
+    <Compile Include="CommonManager.cs" />
+    <Compile Include="Common\ConnectorHelper.cs" />
+    <Compile Include="Common\Constant.cs" />
+    <Compile Include="ExeConnectorManager.cs" />
+    <Compile Include="ExeConnector\EMCOracleManager.cs" />
+    <Compile Include="ExeConnector\ExeHelper.cs" />
+    <Compile Include="ExeConnector\MSSQLManager.cs" />
+    <Compile Include="ExeConnector\PlSqlDeveloperManager.cs" />
+    <Compile Include="ExeConnector\ReflectionXManager.cs" />
+    <Compile Include="ExeConnector\SecureCRTManager.cs" />
+    <Compile Include="ExeConnector\SQLDeveloperOracleManager.cs" />
+    <Compile Include="ExeConnector\SQLyogManager.cs" />
+    <Compile Include="ExeConnector\ToadForOracleManager.cs" />
+    <Compile Include="ParameterManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceManager.cs" />
+    <Compile Include="SessionManager.cs" />
+    <Compile Include="SSOManager.cs" />
+    <Compile Include="UserManager.cs" />
+    <Compile Include="VideoRecorderManager.cs" />
+    <Compile Include="VPNManager.cs" />
+    <Compile Include="Web References\ARCOSWebDT\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="SystemInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ARCOSWebDT\ARCOSWebDT.wsdl" />
+    <None Include="Web References\ARCOSWebDT\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ARCOSWebDT\UserDualFactorOTP.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:5051/ARCOSWebAPI/ARCOSWebDT.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ARCOSWebDT\</RelPath>
+      <UpdateFromURL>http://localhost:5051/ARCOSWebAPI/ARCOSWebDT.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ArconConnector_BusinessLayer_ARCOSWebDT_ARCOSWebDT</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\ARCOSWebDT\ARCOSWebDT.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ConnectorLibrary\ArconAPIUtility\ArconAPIUtility\ArconAPIUtility.csproj">
+      <Project>{27a577ab-39b2-4143-a928-c31b10d6b06c}</Project>
+      <Name>ArconAPIUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ConnectorLibrary\ArconErrorLogger\ArconErrorLogger\ArconErrorLogger.csproj">
+      <Project>{59fa9083-dddb-456a-aa69-fba31ce9d09a}</Project>
+      <Name>ArconErrorLogger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ConnectorLibrary\ArconImageRecorder\ArconImageRecorder\ArconImageRecorder.csproj">
+      <Project>{937d6091-f6be-4883-a10e-cada0108cfb0}</Project>
+      <Name>ArconImageRecorder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ConnectorLibrary\ArconRealTimeSessionMonitor\ArconRealTimeSessionMonitor\ArconRealTimeSessionMonitor.csproj">
+      <Project>{d5769551-484c-4e77-a912-a4ee79046ed4}</Project>
+      <Name>ArconRealTimeSessionMonitor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ConnectorLibrary\ArconWinNativeAPI\ArconWinNativeAPI\ArconWinNativeAPI.csproj">
+      <Project>{03efa4cd-970c-47aa-9dde-91151d84ac6c}</Project>
+      <Name>ArconWinNativeAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ConnectorLibrary\ArcosFloatingElement\ArcosFloatingElement.csproj">
+      <Project>{FEE52A1C-0DF7-4E29-9C07-2C65E753E187}</Project>
+      <Name>ArcosFloatingElement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ConnectorLibrary\ConnectorRPA\ExeRPA\ArconRPA\ArconRPA.csproj">
+      <Project>{f8757ccb-07e8-4584-87cd-2a21996b76c0}</Project>
+      <Name>ArconRPA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArconConnector.BusinessEntities\ArconConnector.BusinessEntities.csproj">
+      <Project>{db79f7df-8dbf-4186-a0e4-fd1c15a2582c}</Project>
+      <Name>ArconConnector.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArconConnector.ServiceLayer\ArconConnector.ServiceLayer.csproj">
+      <Project>{097f21e8-cf44-44ed-973c-b7d42bc63ccb}</Project>
+      <Name>ArconConnector.ServiceLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArconConnector.Forms\ArconConnector.Forms.csproj">
+      <Project>{17d97dc4-4dff-4ca0-82ac-2cf30ca2e2c5}</Project>
+      <Name>ArconConnector.Forms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

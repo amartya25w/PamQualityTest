@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ARCOS/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ARCOS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ARCOS/">
+      <s:element name="IsConnected">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsConnectedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsConnectedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InitializeConnection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pWHO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InitializeConnectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InitializeConnectionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConnectionDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoteIP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConnectionDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConnectionDetailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnDataTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pValue" type="tns:ARCOSWebDTParams" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ARCOSWebDTParams">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CommandTypeValue" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ARCOSQuery" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ARCOSSqlParameter" type="tns:ArrayOfARCOSSqlParameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfARCOSSqlParameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ARCOSSqlParameter" nillable="true" type="tns:ARCOSSqlParameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ARCOSSqlParameter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DBType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParameterName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SqlDBType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SqlValue" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Direction" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="XmlSchemaCollectionDatabase" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="XmlSchemaCollectionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="XmlSchemaCollectionOwningSchema" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UdtTypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ByteData" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnDataTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnDataTableResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pValue" type="tns:ARCOSWebDTParams" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnDataSetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteNonQuery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pValue" type="tns:ARCOSWebDTParams" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteNonQueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExecuteNonQueryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnOptimizedDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pValue" type="tns:ARCOSWebDTParams" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnOptimizedDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnOptimizedDataSetResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServersSupportingServer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Action" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ServerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RemoteIP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServersSupportingServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServersSupportingServerResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateARCONDeskInsightHostName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Action" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pHostName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIPAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateARCONDeskInsightHostNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateARCONDeskInsightHostNameResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyIPAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Action" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pHostName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIPAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyIPAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyIPAddressResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsADAuthenticatedWithARCOS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pAuthType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pDomain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pDomainName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsADAuthenticatedWithARCOSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsADAuthenticatedWithARCOSResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsADAuthenticatedWithARCOSLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pAuthType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pDomain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pDomainName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsADAuthenticatedWithARCOSLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsADAuthenticatedWithARCOSLoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDisplayName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pDomain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pFindForUsername" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDisplayNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserDisplayNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserEmailID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pDomain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pFindForUsername" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserEmailIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserEmailIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionLogData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pValue" type="tns:ARCOSSessionLog" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ARCOSSessionLog">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CommandTyped" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CommandResponse" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCommandLogData" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageLog" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="LogNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCustomLogDateTime" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LogDateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SessionLogDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SessionLogDataResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSessionLogData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pSessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSessionLogDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSessionLogDataResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSOTPToUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objUDFSMSOTP" type="tns:UserDualFactorOTP" />
+            <s:element minOccurs="1" maxOccurs="1" name="pIsDirectConnect" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserDualFactorOTP">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnabled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DualFactorID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobileNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMEIMAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ValidationPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ValidationKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ValidationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CommonDetails" type="tns:ObjectCommonProperties" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ObjectCommonProperties">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedOn" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModifiedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedOn" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidUntil" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetRecordStatus" type="tns:RecordStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriorityStatus" type="tns:PriorityMaster" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsImapActive" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSendToGroupAdmin" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="RecordStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotChanged" />
+          <s:enumeration value="Updated" />
+          <s:enumeration value="NewAdded" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PriorityMaster">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Priority1" />
+          <s:enumeration value="Priority2" />
+          <s:enumeration value="Priority3" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SendSMSOTPToUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendSMSOTPToUserResult" type="tns:UserDualFactorOTP" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSToMobileNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pMobileNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pSMSMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSToMobileNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendSMSToMobileNoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExtendSessionDuration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Action" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeBasedAccessID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccessTypeID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionDurationDD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionDurationHH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionDurationMM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExtendSessionDurationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExtendSessionDurationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="IsConnectedSoapIn">
+    <wsdl:part name="parameters" element="tns:IsConnected" />
+  </wsdl:message>
+  <wsdl:message name="IsConnectedSoapOut">
+    <wsdl:part name="parameters" element="tns:IsConnectedResponse" />
+  </wsdl:message>
+  <wsdl:message name="InitializeConnectionSoapIn">
+    <wsdl:part name="parameters" element="tns:InitializeConnection" />
+  </wsdl:message>
+  <wsdl:message name="InitializeConnectionSoapOut">
+    <wsdl:part name="parameters" element="tns:InitializeConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConnectionDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConnectionDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetConnectionDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConnectionDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDataTableSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnDataTable" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDataTableSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnDataTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnDataSet" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQuerySoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteNonQuery" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQuerySoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteNonQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnOptimizedDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnOptimizedDataSet" />
+  </wsdl:message>
+  <wsdl:message name="ReturnOptimizedDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnOptimizedDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServersSupportingServerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServersSupportingServer" />
+  </wsdl:message>
+  <wsdl:message name="GetServersSupportingServerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServersSupportingServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateARCONDeskInsightHostNameSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateARCONDeskInsightHostName" />
+  </wsdl:message>
+  <wsdl:message name="UpdateARCONDeskInsightHostNameSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateARCONDeskInsightHostNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMyIPAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyIPAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetMyIPAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyIPAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsADAuthenticatedWithARCOSSoapIn">
+    <wsdl:part name="parameters" element="tns:IsADAuthenticatedWithARCOS" />
+  </wsdl:message>
+  <wsdl:message name="IsADAuthenticatedWithARCOSSoapOut">
+    <wsdl:part name="parameters" element="tns:IsADAuthenticatedWithARCOSResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsADAuthenticatedWithARCOSLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:IsADAuthenticatedWithARCOSLogin" />
+  </wsdl:message>
+  <wsdl:message name="IsADAuthenticatedWithARCOSLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:IsADAuthenticatedWithARCOSLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDisplayNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserDisplayName" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDisplayNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserDisplayNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserEmailIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserEmailID" />
+  </wsdl:message>
+  <wsdl:message name="GetUserEmailIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserEmailIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SessionLogDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SessionLogData" />
+  </wsdl:message>
+  <wsdl:message name="SessionLogDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SessionLogDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionLogDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSessionLogData" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionLogDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSessionLogDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSOTPToUserSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMSOTPToUser" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSOTPToUserSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSOTPToUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSToMobileNoSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMSToMobileNo" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSToMobileNoSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSToMobileNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExtendSessionDurationSoapIn">
+    <wsdl:part name="parameters" element="tns:ExtendSessionDuration" />
+  </wsdl:message>
+  <wsdl:message name="ExtendSessionDurationSoapOut">
+    <wsdl:part name="parameters" element="tns:ExtendSessionDurationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ARCOSWebDTSoap">
+    <wsdl:operation name="IsConnected">
+      <wsdl:input message="tns:IsConnectedSoapIn" />
+      <wsdl:output message="tns:IsConnectedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InitializeConnection">
+      <wsdl:input message="tns:InitializeConnectionSoapIn" />
+      <wsdl:output message="tns:InitializeConnectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectionDetail">
+      <wsdl:input message="tns:GetConnectionDetailSoapIn" />
+      <wsdl:output message="tns:GetConnectionDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDataTable">
+      <wsdl:input message="tns:ReturnDataTableSoapIn" />
+      <wsdl:output message="tns:ReturnDataTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDataSet">
+      <wsdl:input message="tns:ReturnDataSetSoapIn" />
+      <wsdl:output message="tns:ReturnDataSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <wsdl:input message="tns:ExecuteNonQuerySoapIn" />
+      <wsdl:output message="tns:ExecuteNonQuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnOptimizedDataSet">
+      <wsdl:input message="tns:ReturnOptimizedDataSetSoapIn" />
+      <wsdl:output message="tns:ReturnOptimizedDataSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServersSupportingServer">
+      <wsdl:input message="tns:GetServersSupportingServerSoapIn" />
+      <wsdl:output message="tns:GetServersSupportingServerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateARCONDeskInsightHostName">
+      <wsdl:input message="tns:UpdateARCONDeskInsightHostNameSoapIn" />
+      <wsdl:output message="tns:UpdateARCONDeskInsightHostNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyIPAddress">
+      <wsdl:input message="tns:GetMyIPAddressSoapIn" />
+      <wsdl:output message="tns:GetMyIPAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsADAuthenticatedWithARCOS">
+      <wsdl:input message="tns:IsADAuthenticatedWithARCOSSoapIn" />
+      <wsdl:output message="tns:IsADAuthenticatedWithARCOSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsADAuthenticatedWithARCOSLogin">
+      <wsdl:input message="tns:IsADAuthenticatedWithARCOSLoginSoapIn" />
+      <wsdl:output message="tns:IsADAuthenticatedWithARCOSLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDisplayName">
+      <wsdl:input message="tns:GetUserDisplayNameSoapIn" />
+      <wsdl:output message="tns:GetUserDisplayNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserEmailID">
+      <wsdl:input message="tns:GetUserEmailIDSoapIn" />
+      <wsdl:output message="tns:GetUserEmailIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogData">
+      <wsdl:input message="tns:SessionLogDataSoapIn" />
+      <wsdl:output message="tns:SessionLogDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionLogData">
+      <wsdl:input message="tns:GetSessionLogDataSoapIn" />
+      <wsdl:output message="tns:GetSessionLogDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSOTPToUser">
+      <wsdl:input message="tns:SendSMSOTPToUserSoapIn" />
+      <wsdl:output message="tns:SendSMSOTPToUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSToMobileNo">
+      <wsdl:input message="tns:SendSMSToMobileNoSoapIn" />
+      <wsdl:output message="tns:SendSMSToMobileNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExtendSessionDuration">
+      <wsdl:input message="tns:ExtendSessionDurationSoapIn" />
+      <wsdl:output message="tns:ExtendSessionDurationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ARCOSWebDTSoap" type="tns:ARCOSWebDTSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsConnected">
+      <soap:operation soapAction="http://ARCOS/IsConnected" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InitializeConnection">
+      <soap:operation soapAction="http://ARCOS/InitializeConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectionDetail">
+      <soap:operation soapAction="http://ARCOS/GetConnectionDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDataTable">
+      <soap:operation soapAction="http://ARCOS/ReturnDataTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDataSet">
+      <soap:operation soapAction="http://ARCOS/ReturnDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <soap:operation soapAction="http://ARCOS/ExecuteNonQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnOptimizedDataSet">
+      <soap:operation soapAction="http://ARCOS/ReturnOptimizedDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServersSupportingServer">
+      <soap:operation soapAction="http://ARCOS/GetServersSupportingServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateARCONDeskInsightHostName">
+      <soap:operation soapAction="http://ARCOS/UpdateARCONDeskInsightHostName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyIPAddress">
+      <soap:operation soapAction="http://ARCOS/GetMyIPAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsADAuthenticatedWithARCOS">
+      <soap:operation soapAction="http://ARCOS/IsADAuthenticatedWithARCOS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsADAuthenticatedWithARCOSLogin">
+      <soap:operation soapAction="http://ARCOS/IsADAuthenticatedWithARCOSLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDisplayName">
+      <soap:operation soapAction="http://ARCOS/GetUserDisplayName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserEmailID">
+      <soap:operation soapAction="http://ARCOS/GetUserEmailID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogData">
+      <soap:operation soapAction="http://ARCOS/SessionLogData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionLogData">
+      <soap:operation soapAction="http://ARCOS/GetSessionLogData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSOTPToUser">
+      <soap:operation soapAction="http://ARCOS/SendSMSOTPToUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSToMobileNo">
+      <soap:operation soapAction="http://ARCOS/SendSMSToMobileNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExtendSessionDuration">
+      <soap:operation soapAction="http://ARCOS/ExtendSessionDuration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ARCOSWebDTSoap12" type="tns:ARCOSWebDTSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsConnected">
+      <soap12:operation soapAction="http://ARCOS/IsConnected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InitializeConnection">
+      <soap12:operation soapAction="http://ARCOS/InitializeConnection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectionDetail">
+      <soap12:operation soapAction="http://ARCOS/GetConnectionDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDataTable">
+      <soap12:operation soapAction="http://ARCOS/ReturnDataTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDataSet">
+      <soap12:operation soapAction="http://ARCOS/ReturnDataSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <soap12:operation soapAction="http://ARCOS/ExecuteNonQuery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnOptimizedDataSet">
+      <soap12:operation soapAction="http://ARCOS/ReturnOptimizedDataSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServersSupportingServer">
+      <soap12:operation soapAction="http://ARCOS/GetServersSupportingServer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateARCONDeskInsightHostName">
+      <soap12:operation soapAction="http://ARCOS/UpdateARCONDeskInsightHostName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyIPAddress">
+      <soap12:operation soapAction="http://ARCOS/GetMyIPAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsADAuthenticatedWithARCOS">
+      <soap12:operation soapAction="http://ARCOS/IsADAuthenticatedWithARCOS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsADAuthenticatedWithARCOSLogin">
+      <soap12:operation soapAction="http://ARCOS/IsADAuthenticatedWithARCOSLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDisplayName">
+      <soap12:operation soapAction="http://ARCOS/GetUserDisplayName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserEmailID">
+      <soap12:operation soapAction="http://ARCOS/GetUserEmailID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogData">
+      <soap12:operation soapAction="http://ARCOS/SessionLogData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionLogData">
+      <soap12:operation soapAction="http://ARCOS/GetSessionLogData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSOTPToUser">
+      <soap12:operation soapAction="http://ARCOS/SendSMSOTPToUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSToMobileNo">
+      <soap12:operation soapAction="http://ARCOS/SendSMSToMobileNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExtendSessionDuration">
+      <soap12:operation soapAction="http://ARCOS/ExtendSessionDuration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ARCOSWebDT">
+    <wsdl:port name="ARCOSWebDTSoap" binding="tns:ARCOSWebDTSoap">
+      <soap:address location="http://localhost:60613/ARCOSWebAPI/ARCOSWebDT.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ARCOSWebDTSoap12" binding="tns:ARCOSWebDTSoap12">
+      <soap12:address location="http://localhost:60613/ARCOSWebAPI/ARCOSWebDT.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
