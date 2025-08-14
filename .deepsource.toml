@@ -1,0 +1,19 @@
+version = 1
+
+[[analyzers]]
+name = "shell"
+
+[[analyzers]]
+name = "cxx"
+
+[[analyzers]]
+name = "javascript"
+
+  [analyzers.meta]
+  plugins = [
+    "angular",
+    "react"
+  ]
+
+[[analyzers]]
+name = "csharp"
